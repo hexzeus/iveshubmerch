@@ -9,11 +9,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <header className="py-6 md:py-12 bg-gradient-to-r from-gray-900 via-black to-gray-900">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-between">
-            <div className="md:w-1/3">
-              <nav className="flex items-center justify-start space-x-3 md:space-x-6">
+      <header className="py-4 md:py-6 bg-gradient-to-r from-gray-900 via-black to-gray-900">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="w-full md:w-1/3 mb-4 md:mb-0">
+              <nav className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-3 md:space-y-0 space-x-0 md:space-x-6">
                 <Link href="/about" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300">
                   About
                 </Link>
@@ -22,19 +22,19 @@ const Layout = ({ children }) => {
                 </Link>
               </nav>
             </div>
-            <div className="flex-1 flex items-center justify-center">
+            <div className="flex-1 flex items-center justify-center mb-4 md:mb-0">
               <Link href="/" className="flex items-center text-gray-300 hover:text-cyan-400 transition-colors duration-300">
                 <img
                   src="/favicon.ico"
                   alt="IVES_HUB MERCH Logo"
-                  className="w-12 h-12 rounded-full mr-4"
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-full mr-2 md:mr-4"
                 />
-                <span className="text-lg font-medium">
+                <span className="text-lg md:text-xl font-medium">
                   IVES_HUB MERCH
                 </span>
               </Link>
             </div>
-            <div className="md:w-1/3 flex items-center justify-end space-x-3 -mr-2.5">
+            <div className="w-full md:w-1/3 flex items-center justify-center md:justify-end space-x-4">
               <button
                 className="snipcart-customer-signin appearance-none px-2 text-gray-300 hover:text-cyan-400 transition-colors duration-300 rounded-md cursor-pointer focus:outline-none"
                 aria-label="User login"
@@ -72,10 +72,10 @@ const Layout = ({ children }) => {
         </div>
       </header>
       <main className="py-6 md:py-12 bg-gray-900">
-        <div className="max-w-6xl mx-auto px-6">{children}</div>
+        <div className="max-w-6xl mx-auto px-4 md:px-6">{children}</div>
       </main>
-      <footer className="py-6 md:py-12 bg-gradient-to-r from-gray-900 via-black to-gray-900">
-        <div className="max-w-6xl mx-auto px-6">
+      <footer className="py-4 md:py-6 bg-gradient-to-r from-gray-900 via-black to-gray-900">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="text-center">
             <p className="text-sm text-gray-500">
               © 2024 IVES_HUB MERCH. All rights reserved.
