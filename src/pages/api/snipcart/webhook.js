@@ -1,14 +1,7 @@
-import type { NextApiResponse } from "next";
-
 import createOrder from "../../../lib/create-order";
 
-import type { SnipcartRequest, SnipcartWebhookEvent } from "../../../types";
-
-export default async function handler(
-  req: SnipcartRequest,
-  res: NextApiResponse
-) {
-  const allowedEvents: SnipcartWebhookEvent[] = [
+export default async function handler(req, res) {
+  const allowedEvents = [
     "order.completed",
     "customauth:customer_updated",
   ];

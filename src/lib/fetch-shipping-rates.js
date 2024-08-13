@@ -1,37 +1,20 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { printful } from "./printful-client";
 
-import { printful } from "../../../lib/printful-client";
-import type {
-  SnipcartShippingRate,
-  PrintfulShippingItem,
-} from "../../../types";
-
-interface SnipcartRequest extends NextApiRequest {
-  body: {
-    eventName: string;
-    mode: string;
-    createdOn: string;
-    content: { [key: string]: any };
-  };
-}
-
-type Data = {
-  /** An array of shipping rates. */
-  rates: SnipcartShippingRate[];
-};
-
-type Error = {
-  errors: { key: string; message: string }[];
-};
-
-export default async function handler(
-  req: SnipcartRequest,
-  res: NextApiResponse<Data | Error>
-) {
+export default async function handler(req, res) {
   const { eventName, content } = req.body;
 
   if (eventName !== "shippingrates.fetch") return res.status(200).end();
-  if (content.items.length === 0) return res.status(200).end();
+
+  if (content.items.length === 0) {
+    return res.status(200).json({
+      errors: [
+        {
+          key: "no_items",
+          message: "No items in cart to calculate shipping.",
+        },
+      ],
+    });
+  }
 
   const {
     items: cartItems,
@@ -54,12 +37,10 @@ export default async function handler(
     ...(shippingAddressPhone && { phone: shippingAddressPhone }),
   };
 
-  const items: PrintfulShippingItem[] = cartItems.map(
-    (item): PrintfulShippingItem => ({
-      external_variant_id: item.id,
-      quantity: item.quantity,
-    })
-  );
+  const items = cartItems.map((item) => ({
+    external_variant_id: item.id,
+    quantity: item.quantity,
+  }));
 
   try {
     const { result } = await printful.post("shipping/rates", {

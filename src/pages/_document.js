@@ -15,10 +15,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
             rel="stylesheet"
           />
-          <link
-            href="/favicon.ico"
-            rel="shortcut icon"
-          />
+          <link href="/favicon.ico" rel="shortcut icon" />
         </Head>
         <body className="antialiased">
           <Main />
@@ -35,7 +32,7 @@ class MyDocument extends Document {
           >
             <address-fields section="top">
               <div className="snipcart-form__field">
-                <snipcart-label for="phone">Phone number</snipcart-label>
+                <snipcart-label htmlFor="phone">Phone number</snipcart-label>
                 <snipcart-input name="phone"></snipcart-input>
               </div>
             </address-fields>

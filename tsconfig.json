@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es5", // This can stay as es5, but es6 is more modern and might be worth considering
     "lib": [
       "dom",
       "dom.iterable",
@@ -8,7 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true, // Enabling strict mode can catch more errors, but might require additional type definitions
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -17,12 +17,37 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "allowSyntheticDefaultImports": true, // Useful for compatibility with ES6 modules
+    "baseUrl": ".", // Enables absolute imports relative to the base directory
+    "paths": {
+      "@/*": [
+        "src/*"
+      ] // Allows you to use absolute imports with @/ prefix
+    }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/components/ProductGrid.js",
+    "src/components/Layout.js",
+    "src/components/VariantPicker.js",
+    "src/components/Product.js",
+    "src/lib/calculate-taxes.js",
+    "src/hooks/useSnipcartCount.js",
+    "src/context/wishlist.js",
+    "src/lib/create-order.js",
+    "src/lib/fetch-shipping-rates.js",
+    "src/lib/printful-client.js",
+    "src/pages/wishlist.js",
+    "src/pages/index.js",
+    "src/pages/_document.js",
+    "src/pages/_app.js",
+    "src/pages/api/products/[id].js",
+    "src/pages/api/snipcart/shipping.js",
+    "src/pages/api/snipcart/webhook.js",
+    "src/pages/api/snipcart/tax.js"
   ],
   "exclude": [
     "node_modules"

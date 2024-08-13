@@ -1,31 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { printful } from "../../../lib/printful-client";
 
-import { printful } from "./printful-client";
-import type { SnipcartTaxItem, PrintfulShippingItem } from "../types";
+export default async function handler(req, res) {
+  const { eventName, content } = req.body;
 
-interface SnipcartRequest extends NextApiRequest {
-  body: {
-    eventName: string;
-    mode: string;
-    createdOn: string;
-    content: { [key: string]: any };
-  };
-}
-
-type Data = {
-  /** An array of tax rates. */
-  taxes: SnipcartTaxItem[];
-};
-
-type Error = {
-  errors: { key: string; message: string }[];
-};
-
-const calculateTaxes = async (
-  req: SnipcartRequest,
-  res: NextApiResponse<Data | Error>
-) => {
-  const { content } = req.body;
+  if (eventName !== "taxes.calculate") return res.status(200).end();
 
   if (content.items.length === 0)
     return res.status(200).json({
@@ -53,15 +31,8 @@ const calculateTaxes = async (
       ],
     });
 
-  const {
-    address1,
-    address2,
-    city,
-    country,
-    province,
-    postalCode,
-    phone,
-  } = shippingAddress;
+  const { address1, address2, city, country, province, postalCode, phone } =
+    shippingAddress;
 
   const recipient = {
     ...(address1 && { address1 }),
@@ -73,12 +44,10 @@ const calculateTaxes = async (
     ...(phone && { phone }),
   };
 
-  const items: PrintfulShippingItem[] = cartItems.map(
-    (item): PrintfulShippingItem => ({
-      external_variant_id: item.id,
-      quantity: item.quantity,
-    })
-  );
+  const items = cartItems.map((item) => ({
+    external_variant_id: item.id,
+    quantity: item.quantity,
+  }));
 
   try {
     const { result } = await printful.post("orders/estimate-costs", {
@@ -96,7 +65,7 @@ const calculateTaxes = async (
         },
       ],
     });
-  } catch ({ error }) {
+  } catch (error) {
     console.log(error);
     res.status(200).json({
       errors: [
@@ -107,6 +76,4 @@ const calculateTaxes = async (
       ],
     });
   }
-};
-
-export default calculateTaxes;
+}

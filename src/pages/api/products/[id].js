@@ -1,21 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-
 import { printful } from "../../../lib/printful-client";
 
-type Data = {
-  id: string;
-  price: number;
-  url: string;
-};
-
-type Error = {
-  errors: { key: string; message: string }[];
-};
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data | Error>
-) {
+export default async function handler(req, res) {
   const { id } = req.query;
 
   try {
@@ -24,11 +9,11 @@ export default async function handler(
     res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
 
     res.status(200).json({
-      id: id as string,
+      id: id,
       price: result.retail_price,
       url: `/api/products/${id}`,
     });
-  } catch ({ error }) {
+  } catch (error) {
     console.log(error);
     res.status(404).json({
       errors: [
