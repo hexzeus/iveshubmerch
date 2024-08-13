@@ -25,3 +25,84 @@ body {
     background-color: #45a29e;
   }
   
+  /* Glitch Effect */
+.glitch {
+    position: relative;
+    color: transparent;
+    animation: glitch 1s infinite;
+  }
+  
+  .glitch::before,
+  .glitch::after {
+    content: "MERCH";
+    position: absolute;
+    left: 0;
+    color: #00ffea; /* Matrix-style cyan color */
+    background: transparent;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+  }
+  
+  .glitch::before {
+    animation: glitch-top 1s infinite linear alternate-reverse;
+    top: -2px;
+    left: -2px;
+  }
+  
+  .glitch::after {
+    animation: glitch-bottom 1s infinite linear alternate-reverse;
+    top: 2px;
+    left: 2px;
+  }
+  
+  @keyframes glitch {
+    0% {
+      text-shadow: -2px 2px #00ffea, 2px -2px #ff00ea;
+    }
+    20% {
+      text-shadow: -2px -2px #ff00ea, 2px 2px #00ffea;
+    }
+    40% {
+      text-shadow: 2px -2px #ff00ea, -2px 2px #00ffea;
+    }
+    60% {
+      text-shadow: 2px 2px #00ffea, -2px -2px #ff00ea;
+    }
+    80% {
+      text-shadow: -2px -2px #ff00ea, 2px 2px #00ffea;
+    }
+    100% {
+      text-shadow: 2px 2px #00ffea, -2px -2px #ff00ea;
+    }
+  }
+  
+  @keyframes glitch-top {
+    0% {
+      clip: rect(0, 900px, 0, 0);
+      transform: translate(-2px, -2px);
+    }
+    50% {
+      clip: rect(20px, 900px, 30px, 0);
+      transform: translate(2px, 2px);
+    }
+    100% {
+      clip: rect(40px, 900px, 70px, 0);
+      transform: translate(-2px, -2px);
+    }
+  }
+  
+  @keyframes glitch-bottom {
+    0% {
+      clip: rect(40px, 900px, 70px, 0);
+      transform: translate(2px, 2px);
+    }
+    50% {
+      clip: rect(20px, 900px, 30px, 0);
+      transform: translate(-2px, -2px);
+    }
+    100% {
+      clip: rect(0, 900px, 0, 0);
+      transform: translate(2px, 2px);
+    }
+  }
+  

@@ -9,7 +9,7 @@ const IndexPage = ({ products }) => (
   <>
     <div className="bg-gradient-to-b from-gray-900 via-black to-gray-900 min-h-screen flex flex-col items-center justify-center">
       <div className="w-full max-w-4xl px-4 py-8 md:py-16 text-center">
-        <h1 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">
+        <h1 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 glitch">
           MERCH
         </h1>
       </div>
