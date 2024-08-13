@@ -47,7 +47,8 @@
     "src/pages/api/products/[id].js",
     "src/pages/api/snipcart/shipping.js",
     "src/pages/api/snipcart/webhook.js",
-    "src/pages/api/snipcart/tax.js"
+    "src/pages/api/snipcart/tax.js",
+    "src/pages/about.js"
   ],
   "exclude": [
     "node_modules"

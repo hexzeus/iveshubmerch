@@ -4,10 +4,10 @@ const VariantPicker = ({ variants, ...props }) => {
   return (
     <select
       {...props}
-      className="form-select appearance-none w-full relative mb-3 sm:mb-0 flex-grow sm:mr-3 pl-3 py-2 bg-white border border-gray-300 focus:border-gray-500 shadow-sm text-gray-500 text-sm focus:outline-none focus:text-gray-900 rounded ring-0 focus:ring-0"
+      className="appearance-none w-full mb-3 sm:mb-0 flex-grow sm:mr-3 pl-3 py-2 bg-gray-800 border border-gray-700 text-gray-300 focus:border-cyan-500 focus:text-cyan-300 shadow-md rounded-lg transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-cyan-500"
     >
       {variants.map(({ external_id, name }) => (
-        <option key={external_id} value={external_id}>
+        <option key={external_id} value={external_id} className="bg-gray-900 text-gray-300">
           {name}
         </option>
       ))}

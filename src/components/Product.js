@@ -33,10 +33,10 @@ const Product = ({ id, name, variants }) => {
   const onWishlist = isSaved(id);
 
   return (
-    <article className="border border-gray-200 rounded bg-white flex flex-col relative">
+    <article className="border border-gray-700 rounded-lg bg-gray-900 flex flex-col relative shadow-xl transition-transform transform hover:scale-105">
       <button
         aria-label="Add to wishlist"
-        className="appearance-none absolute top-0 right-0 mt-3 mr-3 text-gray-300 focus:text-gray-500 hover:text-red-500 transition focus:outline-none"
+        className="appearance-none absolute top-0 right-0 mt-3 mr-3 text-gray-400 focus:text-gray-600 hover:text-red-500 transition focus:outline-none"
         onClick={addToWishlist}
       >
         {onWishlist ? (
@@ -52,14 +52,14 @@ const Product = ({ id, name, variants }) => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            className="w-6 h-6 fill-current"
+            className="w-6 h-6 fill-current text-gray-400"
           >
             <path fill="none" d="M0 0H24V24H0z" />
             <path d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228z" />
           </svg>
         )}
       </button>
-      <div className="flex items-center justify-center flex-1 sm:flex-shrink-0 w-full p-6">
+      <div className="flex items-center justify-center flex-1 sm:flex-shrink-0 w-full p-6 bg-gray-800 rounded-t-lg">
         {activeVariantFile && (
           <Image
             src={activeVariantFile.preview_url}
@@ -67,16 +67,15 @@ const Product = ({ id, name, variants }) => {
             height={250}
             alt={`${activeVariant.name} ${name}`}
             title={`${activeVariant.name} ${name}`}
+            className="rounded-lg"
           />
         )}
       </div>
-      <div className="flex-1 p-6 pt-0">
-        <div className="text-center">
-          <p className="mb-1 font-semibold text-gray-900">{name}</p>
-          <p className="text-sm text-gray-500">{formattedPrice}</p>
-        </div>
+      <div className="flex-1 p-6 pt-0 text-center">
+        <p className="mb-1 font-semibold text-white">{name}</p>
+        <p className="text-sm text-cyan-400">{formattedPrice}</p>
       </div>
-      <div className="p-3 flex flex-col sm:flex-row justify-center items-center">
+      <div className="p-4 flex flex-col sm:flex-row justify-center items-center">
         <VariantPicker
           value={activeVariantExternalId}
           onChange={({ target: { value } }) =>
@@ -86,7 +85,7 @@ const Product = ({ id, name, variants }) => {
           disabled={oneStyle}
         />
         <button
-          className="snipcart-add-item w-full md:w-auto transition flex-shrink-0 py-2 px-4 border border-gray-300 hover:border-transparent shadow-sm text-sm font-medium bg-white text-gray-900 focus:text-white hover:bg-blue-600 hover:text-white focus:bg-blue-600 focus:outline-none rounded"
+          className="snipcart-add-item w-full md:w-auto transition flex-shrink-0 py-2 px-4 mt-2 sm:mt-0 border border-gray-600 hover:border-transparent shadow-sm text-sm font-medium bg-gray-700 text-white hover:bg-cyan-600 hover:text-white focus:bg-cyan-600 focus:outline-none rounded-lg"
           data-item-id={activeVariantExternalId}
           data-item-price={activeVariant.retail_price}
           data-item-url={`/api/products/${activeVariantExternalId}`}
