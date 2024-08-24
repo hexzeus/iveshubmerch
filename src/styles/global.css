@@ -1,108 +1,98 @@
 /* src/styles/global.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 body {
-    background-color: #0b0c10;
-    color: #c5c6c7;
-    font-family: 'Inter', sans-serif;
+  background-color: #0b0c10;
+  color: #c5c6c7;
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  color: #66fcf1;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #45a29e;
+}
+
+button {
+  background-color: #1f2833;
+  color: #c5c6c7;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a29e;
+}
+
+.glitch-3d {
+  animation: glitch-3d 2s infinite;
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-3d::before,
+.glitch-3d::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-3d::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00ff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-3d::after {
+  left: -2px;
+  text-shadow: -2px 0 #00fff2;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-3d {
+  0%, 100% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
   }
-  
-  a {
-    color: #66fcf1;
-    transition: color 0.3s ease;
+  50% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
   }
-  
-  a:hover {
-    color: #45a29e;
-  }
-  
-  button {
-    background-color: #1f2833;
-    color: #c5c6c7;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #45a29e;
-  }
-  
-  /* Glitch Effect */
-.glitch {
-    position: relative;
-    color: transparent;
-    animation: glitch 1s infinite;
-  }
-  
-  .glitch::before,
-  .glitch::after {
-    content: "MERCH";
-    position: absolute;
-    left: 0;
-    color: #00ffea; /* Matrix-style cyan color */
-    background: transparent;
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-  }
-  
-  .glitch::before {
-    animation: glitch-top 1s infinite linear alternate-reverse;
-    top: -2px;
-    left: -2px;
-  }
-  
-  .glitch::after {
-    animation: glitch-bottom 1s infinite linear alternate-reverse;
-    top: 2px;
-    left: 2px;
-  }
-  
-  @keyframes glitch {
-    0% {
-      text-shadow: -2px 2px #00ffea, 2px -2px #ff00ea;
-    }
-    20% {
-      text-shadow: -2px -2px #ff00ea, 2px 2px #00ffea;
-    }
-    40% {
-      text-shadow: 2px -2px #ff00ea, -2px 2px #00ffea;
-    }
-    60% {
-      text-shadow: 2px 2px #00ffea, -2px -2px #ff00ea;
-    }
-    80% {
-      text-shadow: -2px -2px #ff00ea, 2px 2px #00ffea;
-    }
-    100% {
-      text-shadow: 2px 2px #00ffea, -2px -2px #ff00ea;
-    }
-  }
-  
-  @keyframes glitch-top {
-    0% {
-      clip: rect(0, 900px, 0, 0);
-      transform: translate(-2px, -2px);
-    }
-    50% {
-      clip: rect(20px, 900px, 30px, 0);
-      transform: translate(2px, 2px);
-    }
-    100% {
-      clip: rect(40px, 900px, 70px, 0);
-      transform: translate(-2px, -2px);
-    }
-  }
-  
-  @keyframes glitch-bottom {
-    0% {
-      clip: rect(40px, 900px, 70px, 0);
-      transform: translate(2px, 2px);
-    }
-    50% {
-      clip: rect(20px, 900px, 30px, 0);
-      transform: translate(-2px, -2px);
-    }
-    100% {
-      clip: rect(0, 900px, 0, 0);
-      transform: translate(2px, 2px);
-    }
-  }
-  
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(0, 9999px, 0, 0); transform: skew(0.5deg); }
+  50% { clip: rect(20px, 9999px, 40px, 0); transform: skew(1.0deg); }
+  100% { clip: rect(40px, 9999px, 80px, 0); transform: skew(0.5deg); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(60px, 9999px, 100px, 0); transform: skew(1.0deg); }
+  50% { clip: rect(40px, 9999px, 80px, 0); transform: skew(0.5deg); }
+  100% { clip: rect(20px, 9999px, 40px, 0); transform: skew(1.0deg); }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
