@@ -22,12 +22,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*" // adding note to trigger update 
+        "src/*" // triggering update
       ]
     }
   },
   "include": [
-    "next-env.d.ts", // adding another note
+    "next-env.d.ts", // 
     "**/*.ts",
     "**/*.tsx",
     "src/components/ProductGrid.js",
