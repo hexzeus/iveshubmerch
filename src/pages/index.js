@@ -31,7 +31,7 @@ export async function getStaticProps() {
   const products = allProducts.map(
     ({ result: { sync_product, sync_variants } }) => ({
       ...sync_product,
-      variants: sync_variants.map(({ name, ...variant }) => ({
+      variants: sync_variants.map(({ name, ...variant }) => ({ // Triggering update
         name: formatVariantName(name),
         ...variant,
       })),
