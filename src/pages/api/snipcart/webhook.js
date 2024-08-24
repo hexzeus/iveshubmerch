@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     );
 
     if (!verifyToken.ok)
-      return res.status(401).json({ message: "Not Authorization" });
+      return res.status(401).json({ message: "Not Authorization" }); // comment to trigger update
   } catch (err) {
     console.log(err);
     return res
