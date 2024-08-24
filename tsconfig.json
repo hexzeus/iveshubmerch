@@ -19,11 +19,11 @@
     "jsx": "preserve",
     "incremental": true,
     "allowSyntheticDefaultImports": true, // Useful for compatibility with ES6 modules
-    "baseUrl": ".", // Enables absolute imports relative to the base directory
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
-      ] // Allows you to use absolute imports with @/ prefix
+      ]
     }
   },
   "include": [
