@@ -210,7 +210,7 @@ Copy the example `env.local` file, and add the necessary ENV variables.
 cp .env.local.example .env.local
 ```
 
-You'll next want to install the project dependencies, and start the local server:
+You'll next want to install the project dependencies, and start the local server: //
 
 ```bash
 npm install

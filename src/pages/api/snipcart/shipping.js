@@ -52,7 +52,7 @@ export default async function handler(req, res) {
       errors: [
         {
           key: error?.reason,
-          message: error?.message, // triggering update
+          message: error?.message,
         },
       ],
     });

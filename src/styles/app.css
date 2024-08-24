@@ -69,7 +69,7 @@
   @apply text-gray-900 text-sm leading-5;
 }
 
-/* .snipcart-modal,
+ .snipcart-modal,
 .snipcart-cart-header,
 .snipcart-cart__secondary-header,
 .snipcart-modal__container {
@@ -113,4 +113,4 @@
 
 .snipcart__box {
   @apply bg-white;
-} */
+} 
